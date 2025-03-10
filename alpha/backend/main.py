@@ -4,6 +4,7 @@ from flask_cors import CORS
 from create_db import initialize_databases
 from routes import setup_routes
 from serve import setup_file_serving
+from backup import setup_backup_routes
 
 app = Flask(__name__)
 CORS(app)
@@ -13,6 +14,9 @@ initialize_databases()
 
 # Set up the routes
 setup_routes(app)
+
+# Set up backup functionality
+setup_backup_routes(app)
 
 # Set up file serving
 app = setup_file_serving(app)
